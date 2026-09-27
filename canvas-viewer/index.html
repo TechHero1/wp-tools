@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta property="og:title" content="Wplace Chunk Viewer">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="script.js"></script>
+    <title>Wplace Canvas Viewer</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      @font-face {
+        font-family: 'AdwaitaSans-Regular';
+        src: url('https://techhero1.github.io/shared/fonts/adwaita-sans/AdwaitaSans-Regular.ttf') format('truetype');
+      }
+    </style>
+  </head>
+  <body class="font-[AdwaitaSans-Regular] bg-gray-200" onload="changeMethod('chunk');getURLValues()">
+    <nav class="bg-gray-800">
+      <div class="mx-auto py-2 px-2 sm:px-6 lg:px-8 text-white text-[1.25rem]">
+        Wplace Canvas Viewer
+      </div>
+    </nav>
+
+    <div class="mx-auto py-2 px-2 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4 flex items-stretch">
+        <div class="rounded-md bg-white p-2 shadow-md flex justify-center img-bg">
+          <img src="preview.jpg" class="img-preview object-contain">
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="grid grid-cols-1 gap-4 p-2 flex items-stretch rounded-md bg-white shadow-md">
+            <div class="grid grid-cols-1 p-2 gap-2 flex items-center rounded-md">
+              <div>
+                <select class="w-[100%] bg-white border p-2 rounded-md hover:bg-gray-100 focus:border-2 outline-0 transition duration-300 method-input" onchange="changeMethod(this.value)">
+                  <option value="chunk" selected>Main Canvas</option>
+                  <option value="hq">Alliance Canvas</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        <div class="grid grid-cols-1 gap-2 p-2 flex items-stretch rounded-md bg-white shadow-md chunk-form">
+          <div class="flex flex-col p-2 gap-2 items-center rounded-md">
+            <div>Chunk Coordinates</div>
+            <div class="flex flex-row gap-2 w-[100%]">
+              <input class="w-[100%] bg-white border p-2 rounded-md hover:bg-gray-100 focus:border-2 outline-0 transition duration-300" id="x" type="text">
+              <input class="w-[100%] bg-white border p-2 rounded-md hover:bg-gray-100 focus:border-2 outline-0 transition duration-300" id="y" type="text">
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row w-[100%] p-2 gap-2 rounded-md">
+            <button onclick="getImage(true)" class="w-[100%] p-2 bg-white border rounded-md place-self-center hover:bg-gray-100 focus:border-2 outline-0 transition duration-300 cursor-pointer">View Chunk</button>
+            <a href="" target="_blank" class="w-[100%] text-center p-2 bg-white border rounded-md place-self-center hover:bg-gray-100 focus:border-2 outline-0 transition duration-300 chunk-newtab-btn">Open in new tab</a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-2 p-2 flex items-stretch rounded-md bg-white shadow-md hq-form">
+          <div class="flex flex-col p-2 gap-2 items-center rounded-md">
+            <div>Alliance ID</div>
+            <div class="flex flex-row gap-2 w-[100%]">
+              <input class="w-[100%] bg-white border p-2 rounded-md hover:bg-gray-100 focus:border-2 outline-0 transition duration-300" id="hq-id" type="text">
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row w-[100%] p-2 gap-2 items-center rounded-md">
+            <button onclick="getImage(true)" class="w-[100%] p-2 bg-white border rounded-md place-self-center hover:bg-gray-100 focus:border-2 outline-0 transition duration-300 cursor-pointer">View Canvas</button>
+            <a href="" target="_blank" class="w-[100%] text-center p-2 bg-white border rounded-md place-self-center hover:bg-gray-100 focus:border-2 outline-0 transition duration-300 hq-newtab-btn">Open in new tab</a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-2 p-2 flex items-stretch rounded-md bg-white shadow-md bg-form">
+          <div class="flex flex-col p-2 gap-2 items-center rounded-md">
+            <div>Background Color</div>
+            <div class="flex flex-row gap-2 w-[100%] h-[40px]">
+              <button onclick="setBG('bg-white')" class="w-[100%] h-[100%] p-2 bg-white border rounded-md place-self-center hover:border-4 focus:border-3 outline-0 transition-all duration-100"></button>
+              <button onclick="setBG('bg-[#9ebdff]')" class="w-[100%] h-[100%] p-2 bg-[#9ebdff] border rounded-md place-self-center hover:border-4 focus:border-3 outline-0 transition-all duration-100"></button>
+              <button onclick="setBG('bg-[#45516E]')" class="w-[100%] h-[100%] p-2 bg-[#45516E] border rounded-md place-self-center hover:border-4 focus:border-3 outline-0 transition-all duration-100"></button>
+              <button onclick="setBG('bg-[#e3efd4]')" class="w-[100%] h-[100%] p-2 bg-[#e3efd4] border rounded-md place-self-center hover:border-4 focus:border-3 outline-0 transition-all duration-100"></button>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
