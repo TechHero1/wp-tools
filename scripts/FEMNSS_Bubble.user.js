@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         FEMNSS Bubble
-// @version      2026-09-27
+// @version      2026-10-07
 // @description  FEMNSS Bubble
 // @author       Far Eastern Magic Napping Society of Summer
 // @icon         https://techhero1.github.io/wp-tools/scripts/icon.png
@@ -226,11 +226,11 @@ var hq_first_load = false;
       function setBubble(line1, counts) {
         if (!bubble) return;
         bubble.innerHTML = `
-          <div style="font-weight:600">${femnss_name}</div><br>
-          <div style="font-weight:600" class="bubble-droplets">Droplets: ${player_droplets}</div>
-          <div style="font-weight:600" class="bubble-nextlevel">Next level in: ${next_level} pixels</div>
-          <div style="font-weight:600" class="bubble-chargeshq">Charges in HQ: ${hq_charges}/${hq_charges_max}</div><br>
-          <div style="font-weight:600">${line1}</div>
+          <div class="text-sm">${femnss_name}</div><br>
+          <div class="bubble-droplets text-sm">Droplets: ${player_droplets}</div>
+          <div class="bubble-nextlevel text-sm">Next level in: ${next_level} pixels</div>
+          <div class="bubble-chargeshq text-sm">Charges in HQ: ${hq_charges}/${hq_charges_max}</div><br>
+          <div class="text-sm">${line1}</div>
         `;
       }
 
@@ -244,18 +244,15 @@ var hq_first_load = false;
       function createBubble() {
         bubble = document.createElement('div');
         bubble.classList.add("bubble_element");
+        bubble.classList.add("game-panel-surface");
+        bubble.classList.add("bg-base-300");
+        bubble.classList.add("rounded-xl");
         Object.assign(bubble.style, {
           position: 'fixed',
           bottom: '20px',
           right: '20px',
           padding: '8px 10px',
-          background: 'rgba(16,18,22,0.9)',
-          color: '#e6edf3',
-          border: '1px solid #2b3138',
-          borderRadius: '10px',
-          font: '12px/1.4 system-ui, Segoe UI, Roboto, Arial, sans-serif',
           zIndex: 2147483647,
-          boxShadow: '0 6px 18px rgba(0,0,0,0.25)',
           cursor: 'move',
           minWidth: '160px'
         });
